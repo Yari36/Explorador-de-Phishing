@@ -41,3 +41,19 @@ public class DetectorPhishing {
         terminosPhishing.put("apple", 3);
         terminosPhishing.put("información personal", 3);
     }
+    public static void main(String[] args) {
+        String nombreArchivo = "C:\\Users\\Downloads\\anime.txt"; 
+
+        try (BufferedReader lector = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            int puntuacionTotal = 0;
+            Map<String, Integer> ocurrenciasTerminos = new HashMap<>();
+
+            while ((linea = lector.readLine()) != null) {
+                for (String termino : terminosPhishing.keySet()) {
+                    if (linea.toLowerCase().contains(termino.toLowerCase())) {
+                        puntuacionTotal += terminosPhishing.get(termino);
+                        ocurrenciasTerminos.put(termino, ocurrenciasTerminos.getOrDefault(termino, 0) + 1);
+                    }
+                }
+            } 
