@@ -57,3 +57,6 @@ public class DetectorPhishing {
                     }
                 }
             } 
+            for (String termino : ocurrenciasTerminos.keySet()) {
+                System.out.println("Término: " + termino + ", Ocurrencias: " + ocurrenciasTerminos.get(termino) + ", Puntos: " + ocurrenciasTerminos.get(termino) * terminosPhishing.get(termino));
+            }
